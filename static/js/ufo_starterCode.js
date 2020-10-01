@@ -24,18 +24,14 @@ function buildTable(data) {
 }
 
 // 1. Create a variable to keep track of all the filters as an object.
-filters = []
+
 
 // 3. Use this function to update the filters. 
 function updateFilters() {
-    console.log("City was changed")
+
     // 4a. Save the element that was changed as a variable.
-    let city_name = d3.select("#city").property("value");
+
     // 4b. Save the value that was changed as a variable.
-    if (city_name) {
-      element_name = "city"
-      console.log(element_name, " is ", city_name) 
-    }
 
     // 4c. Save the id of the filter that was changed as a variable.
 
@@ -64,13 +60,7 @@ function updateFilters() {
   }
   
   // 2. Attach an event to listen for changes to each filter
-  // Attach an event to listen for the form button
-d3.selectAll("#datetime").on("change", updateFilters)
-d3.selectAll("#city").on("change", updateFilters)
-d3.selectAll("#state").on("change", updateFilters)
-d3.selectAll("#country").on("change", updateFilters)
-d3.selectAll("#shape").on("change", updateFilters)
-
+  
   
   // Build the table when the page loads
   buildTable(tableData);
