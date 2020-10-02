@@ -6,13 +6,14 @@ Interest in UFOs (Unidentified Flying Objects) is widespread.  However, it is no
 
 ## Results
 
-Our application allows searching on a number of criteria:
-Date
-City
-State
-Country
-Shape
+Our application allows searching on a number of criteria:<br><br>
+<b>Date<br>
+City<br>
+State<br>
+Country<br>
+Phenomenon Shape</b>
 
-Here is a sample screen.  The actual criteria entered by the user are in black and placeholder samples are in grey.  There can be any combination of criteria and the results are displayed on the right:
+A sample screen is below.  The actual criteria entered by the user are in black, and placeholder samples are in grey.<br>
+There can be any combination of these criteria.  The results are displayed on the right:
 
 <img src=static/images/CriteriaImage.png></img>
