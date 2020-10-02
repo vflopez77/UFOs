@@ -24,52 +24,57 @@ function buildTable(data) {
 }
 
 // 1. Create a variable to keep track of all the filters as an object.
-filters = []
+var filters = {}
 
 // 3. Use this function to update the filters. 
 function updateFilters() {
-    console.log("City was changed")
+    
     // 4a. Save the element that was changed as a variable.
-    let city_name = d3.select("#city").property("value");
+    let changedElement = d3.select(this);
+
     // 4b. Save the value that was changed as a variable.
-    if (city_name) {
-      element_name = "city"
-      console.log(element_name, " is ", city_name) 
-    }
+    let elementValue = changedElement.property("value");
+    console.log(elementValue);
 
     // 4c. Save the id of the filter that was changed as a variable.
+    let filterId = changedElement.attr("id");
+    console.log(filterId);
 
-  
     // 5. If a filter value was entered then add that filterId and value
     // to the filters list. Otherwise, clear that filter from the filters object.
- 
-  
+    if (elementValue) {
+      filters[filterId] = elementValue;
+    }
+    else {
+      delete filters[filterID];
+    }
     // 6. Call function to apply all filters and rebuild the table
     filterTable();
-  
   }
   
   // 7. Use this function to filter the table when data is entered.
   function filterTable() {
   
     // 8. Set the filtered data to the tableData.
-    
+    let filteredData = tableData;
   
     // 9. Loop through all of the filters and keep any data that
     // matches the filter values
-    
+    Object.entries(filters).forEach(([key,value]) => {
+      filteredData = filteredData.filter(row => row[key] === value);
+    });
   
     // 10. Finally, rebuild the table using the filtered data
-    
+    buildTable(filteredData);
   }
   
   // 2. Attach an event to listen for changes to each filter
   // Attach an event to listen for the form button
-d3.selectAll("#datetime").on("change", updateFilters)
-d3.selectAll("#city").on("change", updateFilters)
-d3.selectAll("#state").on("change", updateFilters)
-d3.selectAll("#country").on("change", updateFilters)
-d3.selectAll("#shape").on("change", updateFilters)
+d3.select("#datetime").on("change", updateFilters)
+d3.select("#city").on("change", updateFilters)
+d3.select("#state").on("change", updateFilters)
+d3.select("#country").on("change", updateFilters)
+d3.select("#shape").on("change", updateFilters)
 
   
   // Build the table when the page loads
